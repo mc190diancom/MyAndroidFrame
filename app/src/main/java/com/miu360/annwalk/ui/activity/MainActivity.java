@@ -2,6 +2,7 @@ package com.miu360.annwalk.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.miu360.annwalk.R;
 
@@ -15,6 +16,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initview() {
-
+        Log.e("main","maininit");
     }
 }
