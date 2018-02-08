@@ -1,0 +1,48 @@
+package com.miu360.annwalk.presenter;
+
+import com.miu360.annwalk.base.BaseEntity;
+import com.miu360.annwalk.base.RxPresenter;
+import com.miu360.annwalk.base.contract.LoginContract;
+import com.miu360.annwalk.model.DataManager;
+import com.miu360.annwalk.model.bean.User;
+import com.miu360.annwalk.model.data.UserData;
+import com.miu360.annwalk.model.http.analysis.CommonSubscriber;
+import javax.inject.Inject;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
+/**
+ * Created by Murphy on 2018/2/1.
+ * 登录的presenter
+ */
+
+public class LoginPresenter extends RxPresenter<LoginContract.View> implements LoginContract.Presenter{
+    private DataManager mDataManager;
+
+    @Inject
+    LoginPresenter(DataManager mDataManager) {
+        this.mDataManager = mDataManager;
+    }
+
+    @Override
+    public void attachView(LoginContract.View view) {
+        super.attachView(view);
+    }
+
+    public void login(final String username, String password) {
+        addSubscribe(mDataManager.getUserInfo(UserData.login(username,password))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new CommonSubscriber<BaseEntity<User>>(mView) {
+                    @Override
+                    public void onNext(BaseEntity<User> userBaseEntity) {
+                        if(userBaseEntity.isOk()){
+                            mView.LoginSuccess(userBaseEntity.getData());
+                        }else{
+                            mView.LoginFailed(userBaseEntity.getErrormsg());
+                        }
+                    }
+                }));
+    }
+}
