@@ -1,0 +1,50 @@
+一、gitbash上传代码
+	0、首先在github上面创建一个新的项目，如MyAndroidFrame
+	1、git config --global user.name "mc190diancom" //用户名
+	   git config --global user.email "617630399@qq.com" //邮箱
+	   检测是否成功
+	   git config --global user.name
+	   git config --global user.email
+
+	2、进入到项目中
+	   git init
+	   git add . //这样是把当前目录的所有添加进去
+	   git commit -m "log" //log代表你的提交日志
+	   
+	3、把仓库和远程链接关联
+	   git remote add origin git@github.com:mc190diancom/MyAndroidFrame //mc190diancom为你的git用户名、MyAndroidFrame为项目名
+
+	4、上传到github上
+	   git push -u origin master
+   
+    
+    注意：
+    基本第一次上传会遇到很多问题。
+    1、git@github.com: Permission denied (publickey). //可以通过ssh -T git@github.com检测是否能连上
+       这个代表公钥和github上的没匹配上
+	 
+	 1>ssh-keygen -t rsa -C "mc190diancom" //mc190diancom为git用户名
+	   可以把所有的步骤enter，最后生成自己电脑的公钥
+       windows的公钥和私钥一般在user/administrator/.ssh/目录中
+	 2>打开公钥全部复制
+	    在github上setting>SSH and GPG keys>New SSH key>把公钥复制进去，标题可以自己随便取，只是一个标识
+     3>ssh -T git@github.com测试连接，一般都可以了
+	 
+	2、error: failed to push some refs to 'git@github.com:mc190diancom/MyAndroidFrame'
+       hint: Updates were rejected because the remote contains work that you do
+       hint: not have locally. This is usually caused by another repository pushing
+       出现错误的主要原因是github中的README.md文件不在本地代码目录中
+	  
+	   1>先拉取再上传，我这里是合并再上传
+	   2>git pull --rebase origin master //这里可在项目中看到多了一个README.md文件
+	   3>git push -u origin master	  
+	  
+二、androidStudio上传代码
+    1、setting>Version Control>Git 找到电脑中使用的git.exe一般在git安装目录里的Git\bin\git.exe ，之后可以右边的test测试是否连上
+	2、setting>Version Control>GitHub 
+	   Host: github.com
+	   Login: gitHub的用户名
+	   Password: github用户名密码
+	3、Test测试是否连接上
+	4、上边vcs向上小箭头提交，注意这里提交的仅仅只是提交到本地
+	5、右键项目名>Git>Repository>Push,这里才是提交到github官网
