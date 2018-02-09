@@ -35,6 +35,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends SimpleActivi
     @Override
     protected void onViewCreated() {
         super.onViewCreated();
+        self = this;
         initInject();
         if (mPresenter != null)
             mPresenter.attachView(this);

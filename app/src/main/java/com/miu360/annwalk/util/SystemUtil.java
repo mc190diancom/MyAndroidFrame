@@ -8,9 +8,12 @@ import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Toast;
 
 
 import com.miu360.annwalk.app.App;
@@ -53,6 +56,49 @@ public class SystemUtil {
     public static boolean isNetworkConnected() {
         ConnectivityManager connectivityManager = (ConnectivityManager) App.getInstance().getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
         return connectivityManager.getActiveNetworkInfo() != null;
+    }
+
+    private static Toast ItToast,MainToast;
+    private static Handler uiHandler = new Handler(Looper.getMainLooper());
+    public static void toast(final Context ctx, final String resId, final int duration) {
+        if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
+            //这里这样是为了避免多次执行这个方法,弹出框叠加
+            if(MainToast == null){
+                MainToast = Toast.makeText(ctx, resId, duration);
+            }else{
+                MainToast.setText(resId);
+            }
+            MainToast.show();
+        } else {
+            uiHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    if(ItToast == null){
+                        ItToast = Toast.makeText(ctx, resId, duration);
+                    }else{
+                        ItToast.setText(resId);
+                    }
+                    ItToast.show();
+                }
+            });
+        }
+    }
+
+    public static void cancel() {
+        if (ItToast == null) {
+            return;
+        }
+        if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
+            ItToast.cancel();
+        } else {
+            uiHandler.post(new Runnable() {
+
+                @Override
+                public void run() {
+                    ItToast.cancel();
+                }
+            });
+        }
     }
 
     /**
