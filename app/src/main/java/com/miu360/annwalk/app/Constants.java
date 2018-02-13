@@ -15,5 +15,5 @@ public class Constants {
     //public static final String PATH_CACHE = PATH_DATA + "/NetCache";
 
     public static final String PATH_SDCARD = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "codeest" + File.separator + "GeekNews";
-
+    public static final String HEAD_URLNEW = "http://47.94.58.63/common/public";
 }

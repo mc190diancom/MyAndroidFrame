@@ -11,7 +11,6 @@ import com.miu360.annwalk.util.SnackbarUtil;
 
 import javax.inject.Inject;
 
-
 /**
  * Created by Murphy on 2018/2/1.
  * MVP activity基类
@@ -35,7 +34,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends SimpleActivi
     @Override
     protected void onViewCreated() {
         super.onViewCreated();
-        self = this;
         initInject();
         if (mPresenter != null)
             mPresenter.attachView(this);
@@ -46,11 +44,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends SimpleActivi
         if (mPresenter != null)
             mPresenter.detachView();
         super.onDestroy();
-    }
-
-    @Override
-    protected int getLayout() {
-        return 0;
     }
 
     @Override

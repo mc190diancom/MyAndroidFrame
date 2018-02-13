@@ -1,51 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@mipmap/bg"
-    android:orientation="vertical"
-    tools:context="com.miu360.annwalk.ui.activity.LoginActivity" >
-
-    <ImageView
-        android:id="@+id/img_logo"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="105dp"
-        android:layout_marginBottom="50dp"
-        android:src="@mipmap/ic_avatar_default"/>
-
-    <include
-        android:id="@+id/input_layout"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        layout="@layout/input_layout" />
+        android:layout_height="match_parent"
+        android:background="@mipmap/bg"
+        android:orientation="vertical"
+        tools:context="com.miu360.annwalk.ui.activity.LoginActivity" >
 
-    <include
-        android:id="@+id/layout_progress"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        layout="@layout/layout_progress"
-        android:visibility="gone" />
-    <!--android:drawableRight="@drawable/widget_input_clear"-->
+        <ImageView
+            android:id="@+id/img_logo"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="105dp"
+            android:layout_marginBottom="50dp"
+            android:src="@mipmap/ic_avatar_default"
+            android:contentDescription="@string/login_head" />
 
-    <Button
-        android:id="@+id/log_login"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginLeft="100dp"
-        android:layout_below="@id/input_layout"
-        android:background="@drawable/tv_corner"
-        android:textColor="@color/white"
-        android:paddingBottom="5dp"
-        android:text="登录"
-        android:textSize="17sp" />
-    <!--android:stateListAnimator="@null"
-    android:elevation="5dp"-->
+        <include
+            android:id="@+id/input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            layout="@layout/input_layout" />
 
-</LinearLayout>
+        <include
+            android:id="@+id/layout_progress"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            layout="@layout/layout_progress"
+            android:visibility="gone" />
+        <!--android:drawableRight="@drawable/widget_input_clear"-->
+
+        <Button
+            android:id="@+id/log_login"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginLeft="100dp"
+            android:background="@drawable/tv_corner"
+            android:textColor="@color/white"
+            android:paddingBottom="5dp"
+            android:text="@string/login"
+            android:textSize="17sp"/>
+        <!--android:stateListAnimator="@null"
+        android:elevation="5dp"-->
+
+    </LinearLayout>
+</layout>

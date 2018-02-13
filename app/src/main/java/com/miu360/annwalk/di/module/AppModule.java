@@ -4,6 +4,8 @@ import com.miu360.annwalk.app.App;
 import com.miu360.annwalk.model.DataManager;
 import com.miu360.annwalk.model.http.HttpHelper;
 import com.miu360.annwalk.model.http.RetrofitHelper;
+import com.miu360.annwalk.model.prefs.ImplPreferencesHelper;
+import com.miu360.annwalk.model.prefs.PreferencesHelper;
 
 import javax.inject.Singleton;
 
@@ -37,7 +39,13 @@ public class AppModule {
 
     @Provides
     @Singleton
-    DataManager provideDataManager(HttpHelper httpHelper) {
-        return new DataManager(httpHelper);
+    PreferencesHelper providePreferencesHelper(ImplPreferencesHelper implPreferencesHelper) {
+        return implPreferencesHelper;
+    }
+
+    @Provides
+    @Singleton
+    DataManager provideDataManager(HttpHelper httpHelper,PreferencesHelper preferencesHelper) {
+        return new DataManager(httpHelper,preferencesHelper);
     }
 }

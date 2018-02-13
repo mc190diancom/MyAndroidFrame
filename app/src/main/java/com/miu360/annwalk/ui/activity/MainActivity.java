@@ -1,21 +1,45 @@
 package com.miu360.annwalk.ui.activity;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-
+import android.databinding.DataBindingUtil;
 import com.miu360.annwalk.R;
+import com.miu360.annwalk.base.BaseActivity;
+import com.miu360.annwalk.base.contract.MainContract;
+import com.miu360.annwalk.databinding.ActivityMainBinding;
+import com.miu360.annwalk.presenter.MainPresenter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View{
+    private ActivityMainBinding mBinding;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        initview();
+    protected void initInject() {
+        getActivityComponent().inject(this);
     }
 
-    private void initview() {
-        Log.e("main","maininit");
+    @Override
+    protected void getLayout() {
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
     }
+
+    @Override
+    protected void initEventAndData() {
+        super.initEventAndData();
+        mPresenter.getUserInfo();
+    }
+
+    @Override
+    public void getUserName(String name) {
+        mBinding.username.setText(name);
+    }
+
+    @Override
+    public void getUserBirth(String birth) {
+        mBinding.password.setText(birth);
+    }
+
+    @Override
+    public void getUserFailed(String msg) {
+
+    }
+
+
 }

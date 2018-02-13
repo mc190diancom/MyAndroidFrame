@@ -3,11 +3,9 @@ package com.miu360.annwalk.presenter;
 import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
-
 import com.miu360.annwalk.base.BaseEntity;
 import com.miu360.annwalk.base.RxPresenter;
 import com.miu360.annwalk.base.contract.LoginContract;
@@ -46,15 +44,23 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new CommonSubscriber<BaseEntity<User>>(mView) {
                     @Override
-                    public void onNext(BaseEntity<User> userBaseEntity) {
-                        if(userBaseEntity.isOk()){
-                            mView.LoginSuccess(userBaseEntity.getData());
-                        }else{
-                            mView.reCovery();
-                            mView.LoginFailed(userBaseEntity.getErrormsg());
-                        }
+                    public void onNext(final BaseEntity<User> userBaseEntity) {
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                mView.reCovery();
+                                if(userBaseEntity.isOk()){
+                                    mView.LoginSuccess(userBaseEntity.getData());
+                                    mDataManager.updateUser(userBaseEntity.getData());
+                                }else{
+                                    mView.LoginFailed(userBaseEntity.getErrormsg());
+                                }
+                            }
+                        },1000);
+
                     }
-                }));
+                }
+                ));
     }
 
     @Override

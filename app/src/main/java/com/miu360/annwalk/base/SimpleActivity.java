@@ -19,7 +19,6 @@ import me.yokeyword.fragmentation.SupportActivity;
 public abstract class SimpleActivity extends SupportActivity {
 
     protected Activity mContext;
-    protected BaseActivity self;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,7 +29,8 @@ public abstract class SimpleActivity extends SupportActivity {
             decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
-        setContentView(getLayout());
+        getLayout();
+        //setContentView(getLayout());//由于databinding的方式绑定视图，重新定义方法
         mContext = this;
         onViewCreated();
         App.getInstance().addActivity(this);
@@ -47,6 +47,6 @@ public abstract class SimpleActivity extends SupportActivity {
         App.getInstance().removeActivity(this);
     }
 
-    protected abstract int getLayout();
+    protected abstract void getLayout();
     protected abstract void initEventAndData();
 }

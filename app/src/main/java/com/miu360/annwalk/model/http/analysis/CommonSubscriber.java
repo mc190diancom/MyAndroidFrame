@@ -55,7 +55,7 @@ public abstract class CommonSubscriber<T> extends ResourceSubscriber<T> {
         String clsName = t.getClass().getName();
         if (mErrorMsg != null && !TextUtils.isEmpty(mErrorMsg)) {
             mView.showErrorMsg(mErrorMsg);
-        }else if (t instanceof SocketTimeoutException) {
+        } else if (t instanceof SocketTimeoutException) {
             mView.showErrorMsg("服务器网络超时，请稍后重试");
         } else if (t instanceof ConnectTimeoutException) {
             mView.showErrorMsg("请求服务器超时，请检查网络");

@@ -1,7 +1,5 @@
 package com.miu360.annwalk.base.contract;
 
-import android.view.View;
-
 import com.miu360.annwalk.base.BasePresenter;
 import com.miu360.annwalk.model.bean.User;
 
@@ -27,7 +25,7 @@ public interface LoginContract {
         void login(final String username, String password);
         //加载进度条
         void progressAnimator(final android.view.View view);
-        //恢复
+        //当登录失败后，恢复默认界面状态
         void recovery(final android.view.View view);
     }
 }
