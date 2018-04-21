@@ -10,7 +10,7 @@ import io.reactivex.Flowable;
 
 /**
  * Created by Murphy on 2018/2/2.
- *
+ * 网络及本地数据的管理类
  */
 
 public class DataManager implements HttpHelper,PreferencesHelper {

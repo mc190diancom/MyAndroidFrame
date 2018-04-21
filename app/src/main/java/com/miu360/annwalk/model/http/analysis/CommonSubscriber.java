@@ -3,6 +3,8 @@ package com.miu360.annwalk.model.http.analysis;
 import android.text.TextUtils;
 
 import com.miu360.annwalk.base.contract.BaseView;
+import com.miu360.annwalk.model.http.exception.ApiException;
+
 import org.apache.http.conn.ConnectTimeoutException;
 import java.io.EOFException;
 import java.io.FileNotFoundException;
@@ -55,6 +57,8 @@ public abstract class CommonSubscriber<T> extends ResourceSubscriber<T> {
         String clsName = t.getClass().getName();
         if (mErrorMsg != null && !TextUtils.isEmpty(mErrorMsg)) {
             mView.showErrorMsg(mErrorMsg);
+        } else if(t instanceof ApiException){
+            mView.showErrorMsg(t.toString());
         } else if (t instanceof SocketTimeoutException) {
             mView.showErrorMsg("服务器网络超时，请稍后重试");
         } else if (t instanceof ConnectTimeoutException) {
