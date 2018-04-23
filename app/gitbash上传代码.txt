@@ -48,3 +48,7 @@
 	3、Test测试是否连接上
 	4、上边vcs向上小箭头提交，注意这里提交的仅仅只是提交到本地
 	5、右键项目名>Git>Repository>Push,这里才是提交到github官网
+
+三、提交代码遇到的问题
+    1、问题：Push failed: Failed with error: fatal: Could not read from remote repository.
+       解决：studio中Settings——>Git——>将SSH Executable 更换为Native模式(这里一般是Built-in)

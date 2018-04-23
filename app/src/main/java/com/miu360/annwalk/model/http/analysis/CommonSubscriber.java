@@ -1,6 +1,7 @@
 package com.miu360.annwalk.model.http.analysis;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.miu360.annwalk.base.contract.BaseView;
 import com.miu360.annwalk.model.http.exception.ApiException;
@@ -13,6 +14,8 @@ import java.net.SocketTimeoutException;
 
 import io.reactivex.subscribers.ResourceSubscriber;
 import retrofit2.HttpException;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 
 /**
  * Created by Murphy on 2018/2/5.
@@ -51,14 +54,15 @@ public abstract class CommonSubscriber<T> extends ResourceSubscriber<T> {
 
     @Override
     public void onError(Throwable t) {
-        if (mView == null) {
+       if (mView == null) {
             return;
         }
+        Log.e("Throwable","Throwable:"+t.toString());
         String clsName = t.getClass().getName();
         if (mErrorMsg != null && !TextUtils.isEmpty(mErrorMsg)) {
             mView.showErrorMsg(mErrorMsg);
         } else if(t instanceof ApiException){
-            mView.showErrorMsg(t.toString());
+            mView.showErrorMsg(t.getMessage());
         } else if (t instanceof SocketTimeoutException) {
             mView.showErrorMsg("服务器网络超时，请稍后重试");
         } else if (t instanceof ConnectTimeoutException) {

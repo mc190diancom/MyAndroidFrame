@@ -13,10 +13,9 @@ import com.miu360.annwalk.model.DataManager;
 import com.miu360.annwalk.model.bean.User;
 import com.miu360.annwalk.model.data.UserData;
 import com.miu360.annwalk.model.http.analysis.CommonSubscriber;
+import com.miu360.annwalk.rx.RxUtil;
 import com.miu360.annwalk.util.plugtor.JellyInterpolator;
 import javax.inject.Inject;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by Murphy on 2018/2/1.
@@ -38,23 +37,19 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
 
     @Override
     public void login(final String username, String password) {
-        mView.showProgress();
+        //mView.showProgress();
         addSubscribe(mDataManager.getUserInfo(UserData.login(username,password))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(new CommonSubscriber<BaseEntity<User>>(mView) {
+                .compose(RxUtil.<BaseEntity<User>>rxSchedulerHelper())
+                .compose(RxUtil.<User>handleResult())
+                .subscribeWith(new CommonSubscriber<User>(mView) {
                     @Override
-                    public void onNext(final BaseEntity<User> userBaseEntity) {
+                    public void onNext(final User user) {
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                mView.reCovery();
-                                if(userBaseEntity.isOk()){
-                                    mView.LoginSuccess(userBaseEntity.getData());
-                                    mDataManager.updateUser(userBaseEntity.getData());
-                                }else{
-                                    mView.LoginFailed(userBaseEntity.getErrormsg());
-                                }
+                                //mView.reCovery();
+                                mView.LoginSuccess(user);
+                                mDataManager.updateUser(user);
                             }
                         },1000);
 

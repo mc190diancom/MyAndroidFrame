@@ -4,6 +4,9 @@ import android.os.Handler;
 
 import com.miu360.annwalk.base.RxPresenter;
 import com.miu360.annwalk.base.contract.MineContract;
+import com.miu360.annwalk.model.DataManager;
+
+import javax.inject.Inject;
 
 /**
  * Created by Murphy on 2018/4/21.
@@ -12,11 +15,10 @@ import com.miu360.annwalk.base.contract.MineContract;
 
 public class MinePresenter extends RxPresenter<MineContract.View> implements MineContract.Presenter{
    /* private DataManager mDataManager;
-
+*/
     @Inject
-    HomePresenter(DataManager mDataManager) {
-        this.mDataManager = mDataManager;
-    }*/
+    MinePresenter() {
+    }
 
     @Override
     public void attachView(MineContract.View view) {

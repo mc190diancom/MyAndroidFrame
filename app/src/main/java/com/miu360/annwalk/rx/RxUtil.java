@@ -1,11 +1,7 @@
 package com.miu360.annwalk.rx;
 
-import com.codeest.geeknews.model.http.exception.ApiException;
-import com.codeest.geeknews.model.http.response.GankHttpResponse;
-import com.codeest.geeknews.model.http.response.GoldHttpResponse;
-import com.codeest.geeknews.model.http.response.MyHttpResponse;
-import com.codeest.geeknews.model.http.response.WXHttpResponse;
 import com.miu360.annwalk.base.BaseEntity;
+import com.miu360.annwalk.model.http.exception.ApiException;
 
 import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
@@ -18,6 +14,7 @@ import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by codeest on 2016/8/3.
+ *
  */
 public class RxUtil {
 
@@ -45,9 +42,9 @@ public class RxUtil {
                     @Override
                     public Flowable<T> apply(BaseEntity<T> baseEntity) {
                         if(baseEntity.getError() == 0) {
-                            return createData(baseEntity.getResults());
+                            return createData(baseEntity.getData());
                         } else {
-                            return Flowable.error(new ApiException("服务器返回error"));
+                            return Flowable.error(new ApiException(baseEntity.getErrormsg()));
                         }
                     }
                 });

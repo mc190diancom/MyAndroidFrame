@@ -1,19 +1,14 @@
 package com.miu360.annwalk.base;
 
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Created by Murphy on 2018/2/2.
  * 用于存放所有接口返回数据的errorCode和errormsg
  */
 
-public class BaseEntity<E> {
-    @SerializedName("error")
+public class BaseEntity<T> {
     private int error;
-    @SerializedName("errormsg")
     private String errormsg;
-    @SerializedName("data")
-    private E data;
+    private T data;
 
     public boolean isOk() {
         return error == 0;
@@ -35,11 +30,11 @@ public class BaseEntity<E> {
         this.errormsg = errormsg;
     }
 
-    public E getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(E data) {
+    public void setData(T data) {
         this.data = data;
     }
 

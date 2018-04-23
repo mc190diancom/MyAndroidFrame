@@ -31,8 +31,8 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.log_login:
-                mBinding.inputLayout.ll1.setVisibility(View.INVISIBLE);
-                mBinding.inputLayout.ll2.setVisibility(View.INVISIBLE);
+               // mBinding.inputLayout.ll1.setVisibility(View.INVISIBLE);
+               // mBinding.inputLayout.ll2.setVisibility(View.INVISIBLE);
                 mPresenter.login(mBinding.inputLayout.logId.getText().toString(),mBinding.inputLayout.logPwd.getText().toString());
                 break;
         }

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import com.miu360.annwalk.app.App;
 import com.miu360.annwalk.base.BasePresenter;
+import com.miu360.annwalk.di.component.DaggerFragmentComponent;
 import com.miu360.annwalk.di.component.FragmentComponent;
 import com.miu360.annwalk.di.module.FragmentModule;
 import com.miu360.annwalk.util.SnackbarUtil;

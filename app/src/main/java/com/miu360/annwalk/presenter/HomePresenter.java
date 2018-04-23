@@ -4,6 +4,9 @@ import android.os.Handler;
 
 import com.miu360.annwalk.base.RxPresenter;
 import com.miu360.annwalk.base.contract.HomeContract;
+import com.miu360.annwalk.model.DataManager;
+
+import javax.inject.Inject;
 
 /**
  * Created by Murphy on 2018/4/21.
@@ -12,11 +15,10 @@ import com.miu360.annwalk.base.contract.HomeContract;
 
 public class HomePresenter extends RxPresenter<HomeContract.View> implements HomeContract.Presenter{
    /* private DataManager mDataManager;
-
+*/
     @Inject
-    HomePresenter(DataManager mDataManager) {
-        this.mDataManager = mDataManager;
-    }*/
+    HomePresenter() {
+    }
 
     @Override
     public void attachView(HomeContract.View view) {
@@ -28,7 +30,7 @@ public class HomePresenter extends RxPresenter<HomeContract.View> implements Hom
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                mView.showView("我是纵火犯");
+                mView.showView("我是主页");
             }
         },1000);
     }
