@@ -4,7 +4,6 @@ import android.os.Handler;
 
 import com.miu360.annwalk.base.RxPresenter;
 import com.miu360.annwalk.base.contract.MineContract;
-import com.miu360.annwalk.model.DataManager;
 
 import javax.inject.Inject;
 

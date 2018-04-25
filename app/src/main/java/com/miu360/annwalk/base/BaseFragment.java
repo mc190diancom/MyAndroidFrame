@@ -1,4 +1,4 @@
-package com.miu360.annwalk.base.contract;
+package com.miu360.annwalk.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.miu360.annwalk.app.App;
-import com.miu360.annwalk.base.BasePresenter;
 import com.miu360.annwalk.di.component.DaggerFragmentComponent;
 import com.miu360.annwalk.di.component.FragmentComponent;
 import com.miu360.annwalk.di.module.FragmentModule;
@@ -35,6 +34,7 @@ public abstract class BaseFragment<T extends BasePresenter> extends SimpleFragme
         return new FragmentModule(this);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         initInject();

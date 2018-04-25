@@ -1,7 +1,5 @@
 package com.miu360.annwalk.base;
 
-import com.miu360.annwalk.base.contract.BaseView;
-
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 

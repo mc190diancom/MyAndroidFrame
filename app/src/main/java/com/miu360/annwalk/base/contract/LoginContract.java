@@ -1,6 +1,7 @@
 package com.miu360.annwalk.base.contract;
 
 import com.miu360.annwalk.base.BasePresenter;
+import com.miu360.annwalk.base.BaseView;
 import com.miu360.annwalk.model.bean.User;
 
 /**
@@ -9,7 +10,7 @@ import com.miu360.annwalk.model.bean.User;
  */
 
 public interface LoginContract {
-    interface View extends BaseView{
+    interface View extends BaseView {
         //如果登录成功，调用这个方法
         void LoginSuccess(User user);
         //如果登录失败，调用这个方法

@@ -1,4 +1,4 @@
-package com.miu360.annwalk.base.contract;
+package com.miu360.annwalk.base;
 
 /**
  * Created by Murphy on 2018/2/1.

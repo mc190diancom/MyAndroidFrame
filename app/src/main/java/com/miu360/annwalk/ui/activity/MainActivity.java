@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.miu360.annwalk.R;
 import com.miu360.annwalk.base.BaseActivity;
 import com.miu360.annwalk.base.contract.MainContract;
-import com.miu360.annwalk.databinding.ActivityMainBinding;
 import com.miu360.annwalk.databinding.FragmentMainBinding;
 import com.miu360.annwalk.presenter.MainPresenter;
 import com.miu360.annwalk.ui.adapter.MainAdapter;
@@ -43,7 +42,9 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainCon
         mBinding.tabMain.addTab(mBinding.tabMain.newTab().setText(tabTitle[0]));
         mBinding.tabMain.addTab(mBinding.tabMain.newTab().setText(tabTitle[1]));
         mBinding.tabMain.setupWithViewPager(mBinding.vpMain);
+        //noinspection ConstantConditions
         mBinding.tabMain.getTabAt(0).setText(tabTitle[0]);
+        //noinspection ConstantConditions
         mBinding.tabMain.getTabAt(1).setText(tabTitle[1]);
     }
 

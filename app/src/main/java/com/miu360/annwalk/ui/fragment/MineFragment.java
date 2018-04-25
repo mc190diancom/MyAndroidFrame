@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.miu360.annwalk.R;
-import com.miu360.annwalk.base.contract.BaseFragment;
+import com.miu360.annwalk.base.BaseFragment;
 import com.miu360.annwalk.base.contract.MineContract;
 import com.miu360.annwalk.databinding.FragmentMineBinding;
 import com.miu360.annwalk.presenter.MinePresenter;

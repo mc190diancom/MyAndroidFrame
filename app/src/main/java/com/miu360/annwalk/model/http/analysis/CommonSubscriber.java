@@ -3,7 +3,7 @@ package com.miu360.annwalk.model.http.analysis;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.miu360.annwalk.base.contract.BaseView;
+import com.miu360.annwalk.base.BaseView;
 import com.miu360.annwalk.model.http.exception.ApiException;
 
 import org.apache.http.conn.ConnectTimeoutException;
@@ -14,8 +14,6 @@ import java.net.SocketTimeoutException;
 
 import io.reactivex.subscribers.ResourceSubscriber;
 import retrofit2.HttpException;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 
 /**
  * Created by Murphy on 2018/2/5.

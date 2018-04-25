@@ -1,7 +1,7 @@
 package com.miu360.annwalk.base.contract;
 
 import com.miu360.annwalk.base.BasePresenter;
-import com.miu360.annwalk.model.bean.User;
+import com.miu360.annwalk.base.BaseView;
 
 /**
  * Created by Murphy on 2018/2/12.
@@ -9,7 +9,7 @@ import com.miu360.annwalk.model.bean.User;
  */
 
 public interface MainContract {
-    interface View extends BaseView{
+    interface View extends BaseView {
         //如果获取本地的用户名成功，调用这个方法
         void getUserName(String name);
         void getUserBirth(String birth);

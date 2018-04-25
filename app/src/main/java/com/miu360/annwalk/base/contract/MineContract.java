@@ -1,6 +1,7 @@
 package com.miu360.annwalk.base.contract;
 
 import com.miu360.annwalk.base.BasePresenter;
+import com.miu360.annwalk.base.BaseView;
 
 /**
  * Created by Murphy on 2018/2/1.
@@ -8,7 +9,7 @@ import com.miu360.annwalk.base.BasePresenter;
  */
 
 public interface MineContract {
-    interface View extends BaseView{
+    interface View extends BaseView {
         void showView(String content);
     }
 

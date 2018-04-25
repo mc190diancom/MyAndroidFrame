@@ -1,4 +1,4 @@
-package com.miu360.annwalk.base.contract;
+package com.miu360.annwalk.base;
 
 import android.app.Activity;
 import android.content.Context;

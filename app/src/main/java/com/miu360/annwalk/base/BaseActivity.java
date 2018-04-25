@@ -3,7 +3,6 @@ package com.miu360.annwalk.base;
 import android.view.ViewGroup;
 
 import com.miu360.annwalk.app.App;
-import com.miu360.annwalk.base.contract.BaseView;
 import com.miu360.annwalk.di.component.ActivityComponent;
 import com.miu360.annwalk.di.component.DaggerActivityComponent;
 import com.miu360.annwalk.di.module.ActivityModule;
@@ -31,6 +30,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends SimpleActivi
         return new ActivityModule(this);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     protected void onViewCreated() {
         super.onViewCreated();
