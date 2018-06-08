@@ -40,7 +40,7 @@ public class App extends Application {
         super.onCreate();
         instance = this;
         Utils.init(instance);//初始化blankj工具类
-        getScreenSize();
+        getScreenSize();//获取屏幕尺寸
     }
 
     //把每个activity加入到集合，集中管理

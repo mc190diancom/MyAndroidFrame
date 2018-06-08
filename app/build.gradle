@@ -56,4 +56,5 @@ dependencies {
 
     compile "me.yokeyword:fragmentation:0.10.4"
     compile 'com.blankj:utilcode:1.16.4'
+
 }
