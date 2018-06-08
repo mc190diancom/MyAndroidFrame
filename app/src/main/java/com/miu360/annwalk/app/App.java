@@ -7,6 +7,7 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 
+import com.blankj.utilcode.util.Utils;
 import com.miu360.annwalk.di.component.AppComponent;
 import com.miu360.annwalk.di.component.DaggerAppComponent;
 import com.miu360.annwalk.di.module.AppModule;
@@ -38,6 +39,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        Utils.init(instance);//初始化blankj工具类
         getScreenSize();
     }
 
